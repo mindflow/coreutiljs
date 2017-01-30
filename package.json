@@ -1,0 +1,17 @@
+{
+  "name": "coreutil",
+  "version": "1.0.0",
+  "description": "Core Util JS",
+  "main": "src/z.js",
+  "scripts": {
+    "build": "babel src -d target/src",
+    "file": "babel target/src -o target/coreutil.js",
+    "browser": "browserify target/coreutil.js --s coreutil | uglifyjs --compress --mangle > target/coreutil-browser.js"
+  },
+  "author": "Tor Nilsen",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.0.0",
+    "babel-preset-env": "^1.1.8"
+  }
+}
