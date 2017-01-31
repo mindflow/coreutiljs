@@ -5,8 +5,8 @@
   "main": "src/z.js",
   "scripts": {
     "build": "babel src -d target/src",
-    "file": "babel target/src -o target/coreutil.js",
-    "browser": "browserify target/coreutil.js --s coreutil | uglifyjs --compress --mangle > target/coreutil-browser.js"
+    "file": "babel target/src -o target/coreutil.js --source-maps",
+    "browser": "browserify --debug target/coreutil.js --debug --s coreutil | uglifyjs --compress --mangle > target/coreutil-browser.js"
   },
   "author": "Tor Nilsen",
   "license": "MIT",
