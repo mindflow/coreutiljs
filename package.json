@@ -2,16 +2,16 @@
   "name": "coreutil",
   "version": "1.0.0",
   "description": "Core Util JS",
-  "main": "src/z.js",
   "scripts": {
-    "build": "babel src -d target/src",
-    "file": "babel target/src -o target/coreutil.js --source-maps",
-    "browser": "browserify --debug target/coreutil.js --debug --s coreutil | uglifyjs --compress --mangle > target/coreutil-browser.js"
+    "build": "babel src -o target/coreutil.js --source-maps --plugins dynamic-import-webpack",
+	"bundle": "webpack"
   },
   "author": "Tor Nilsen",
   "license": "MIT",
   "devDependencies": {
-    "babel-cli": "^6.0.0",
-    "babel-preset-env": "^1.1.8"
+    "babel-cli": "^6.22.2",
+    "babel-plugin-dynamic-import-webpack": "^1.0.1",
+    "babel-preset-env": "^1.1.8",
+	"webpack": "^2.2.1"
   }
 }
