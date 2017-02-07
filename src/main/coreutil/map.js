@@ -12,6 +12,13 @@ export class Map {
         this._map[name] = value;
     }
 
+    exists(name){
+        if (name in this._map) {
+            return true;
+        }
+        return false;
+    }
+
     forEach(listener,parent) {
         for(let key in this._map) {
             if(!listener(key,this._map[key],parent)){
