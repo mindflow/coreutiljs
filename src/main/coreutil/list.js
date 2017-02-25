@@ -1,7 +1,11 @@
 export class List {
 
-    constructor() {
-        this._list = [];
+    constructor(values) {
+        if(values !== undefined && values instanceof Array){
+            this._list = values;
+        }else{
+            this._list = [];
+        }
     }
 
     get(index) {
