@@ -4,6 +4,10 @@ export class Map {
         this._map = {};
     }
 
+    size(){
+        return Object.keys(this._map).length;
+    }
+
     get(name) {
         return this._map[name];
     }
