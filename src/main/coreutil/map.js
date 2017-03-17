@@ -16,6 +16,10 @@ export class Map {
         this._map[name] = value;
     }
 
+    contains(name) {
+        return this.exists(name);
+    }
+
     exists(name){
         if (name in this._map) {
             return true;
