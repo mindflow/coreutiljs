@@ -1,3 +1,5 @@
+/* jshint esversion: 6 */
+
 export class ObjectFunction{
 
     constructor(theObject,theFunction){

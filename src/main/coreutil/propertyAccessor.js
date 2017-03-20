@@ -1,3 +1,5 @@
+/* jshint esversion: 6 */
+
 export class PropertyAccessor{
 
     static getValue(destination, name) {

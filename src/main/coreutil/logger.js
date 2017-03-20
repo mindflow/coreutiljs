@@ -1,10 +1,12 @@
+/* jshint esversion: 6 */
+
 export class Logger{
 
     static disableDebug() {
         Logger.debugEnabled = false;
     }
 
-    static disableDebug() {
+    static enableDebug() {
         Logger.debugEnabled = true;
     }
 

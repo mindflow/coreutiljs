@@ -1,3 +1,5 @@
+/* jshint esversion: 6 */
+
 export class StringUtils{
 
     static isInAlphabet(val) {
