@@ -2,9 +2,10 @@
     "name": "coreutil",
     "version": "1.0.0",
     "description": "Core Util JS",
-    "main": "./target/cureutil.js",
+    "main": "./umd/coreutil.js",
     "scripts": {
-        "build": "rollup -c"
+        "build": "node ./node_modules/rollup/bin/rollup -c",
+        "test": "node ./node_modules/jasmine-node/bin/jasmine-node ./es2015/test"
     },
     "author": "Toby Nilsen",
     "license": "MIT",

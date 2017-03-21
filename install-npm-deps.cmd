@@ -1,10 +1,18 @@
 @echo off
-
 echo "Installing rollup"
-CMD /C npm install rollup -g
+CMD /C npm install rollup
 
 echo "Installing rollup multi entry"
-CMD /C npm install rollup-plugin-multi-entry -g
+CMD /C npm install rollup-plugin-multi-entry
 
-echo "Install developer deps"
-CMD /C npm install
+echo "Installing jasmine-node"
+CMD /C npm install jasmine-node
+
+echo "Build self"
+CMD /C npm run build
+
+echo "Install self"
+CMD /C npm install .
+
+echo "Test self"
+CMD /C npm run test
