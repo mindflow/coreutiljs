@@ -6,7 +6,7 @@ export class Map {
         this._map = {};
     }
 
-    size(){
+    size() {
         return Object.keys(this._map).length;
     }
 

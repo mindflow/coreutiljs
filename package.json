@@ -2,7 +2,7 @@
   "name": "coreutil",
   "version": "1.0.0",
   "description": "Core Util JS",
-  "main": "./umd/coreutil.js",
+  "main": "./es_module/coreutil.mjs",
   "scripts": {
     "build": "node ./node_modules/rollup/bin/rollup -c",
     "test": "node ./node_modules/jasmine-node/bin/jasmine-node ./src/test"

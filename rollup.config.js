@@ -3,10 +3,10 @@ import babel from 'rollup-plugin-babel';
 
 export default {
     moduleName: 'coreutil',
-    input: "src/main/**/*.js",
+    input: "src/main/**/*.mjs",
     output: {
-        file: "umd/coreutil.js",
-        format: "umd"
+        file: "es_module/coreutil.mjs",
+        format: "es"
     },
     sourceMap: "inline",
     plugins: [
