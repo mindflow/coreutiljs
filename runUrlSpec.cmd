@@ -1,1 +1,0 @@
-node --experimental-modules .\src\test\coreutil\urlSpec.mjs

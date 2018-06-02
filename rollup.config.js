@@ -1,16 +1,25 @@
 import multiEntry from 'rollup-plugin-multi-entry';
-import babel from 'rollup-plugin-babel';
 
-export default {
-    moduleName: 'coreutil',
-    input: "src/main/**/*.mjs",
+export default [{
+    input: "src/**/*.js",
     output: {
-        file: "es_module/coreutil.mjs",
+        name: 'coreutil_v1',
+        file: "bundle/jsm/coreutil_v1.js",
+        sourcemap: "inline",
         format: "es"
     },
-    sourceMap: "inline",
     plugins: [
-        multiEntry(),
-        babel()
+        multiEntry()
     ]
-}
+},{
+    input: "src/**/*.js",
+    output: {
+        name: 'coreutil_v1',
+        file: "bundle/cjs/coreutil_v1.js",
+        sourcemap: "inline",
+        format: "cjs"
+    },
+    plugins: [
+        multiEntry()
+    ]
+}]

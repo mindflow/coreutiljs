@@ -2,6 +2,11 @@
 
 export class PropertyAccessor{
 
+    /**
+     * 
+     * @param {*} destination 
+     * @param {*} name 
+     */
     static getValue(destination, name) {
         var pathArray = name.split('.');
         for (var i = 0, n = pathArray.length; i < n; ++i) {
@@ -15,6 +20,12 @@ export class PropertyAccessor{
         return destination;
     }
 
+    /**
+     * 
+     * @param {*} destination 
+     * @param {*} name 
+     * @param {*} value 
+     */
     static setValue(destination, name, value) {
         var pathArray = name.split('.');
         for (var i = 0, n = pathArray.length; i < n; ++i) {

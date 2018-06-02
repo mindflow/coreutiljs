@@ -14,4 +14,22 @@ export class StringUtils{
         }
         return false;
     }
+
+    static isString(val) {
+        return typeof val === "string";
+    }
+
+    static isBlank(val) {
+        if(!StringUtils.hasValue(val) || val === "") {
+            return true;
+        }
+        return false;
+    }
+
+    static hasValue(val) {
+        if(val ==! null && val ==! undefined) {
+            return true;
+        }
+        return false;
+    }
 }

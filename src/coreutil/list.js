@@ -57,10 +57,33 @@ export class List {
     }
 
     /**
-     * Run the function for each value in the list
-     * 
-     * @param {function} listener - The function to call for each entry
-     * @param {any} parent - The outer context passed into the function, function should return true to continue and false to break
+     * Checks if value on index is equal to paramter
+     * @param {number} index 
+     * @param {any} val 
+     * @returns {boolean}
+     */
+    valueAtEquals(index,val) {
+        if(this.get(index) !== null && this.get(index) !== undefined){
+            return this.get(index) === val;
+        }
+        return false;
+    }
+
+    /**
+     * Checks if first value is equal to parameter
+     * @param {any} val 
+     * @returns {boolean}
+     */
+    firstValueEquals(val) {
+        return this.valueAtEquals(0,val);
+    }
+
+    /**
+     * Loops over all values in the list and calls the provided function
+     * with the key, value and parent as callback paramters while the
+     * called function returns true or the list is fully iterated
+     * @param {function} listener
+     * @param {any} parent
      */
     forEach(listener,parent) {
         for(let val of this._list) {
