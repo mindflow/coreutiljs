@@ -36,6 +36,7 @@ export class List {
      */
     set(index,value) {
         this._list[index] = value;
+        return this;
     }
 
     /**

@@ -29,6 +29,7 @@ export class Map {
      */
     set(key,value) {
         this._map[key] = value;
+        return this;
     }
 
     /**
