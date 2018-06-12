@@ -75,6 +75,7 @@ export class Map {
     addAll(sourceMap){
         sourceMap.forEach(function(key,value,parent) {
             parent.set(key,value);
+            return true;
         },this);
     }
 

@@ -94,4 +94,15 @@ export class List {
         }
     }
 
+    /**
+     * Adds all entries from provided list
+     * @param {List} sourceList 
+     */
+    addAll(sourceList){
+        sourceList.forEach(function(value,parent) {
+            parent.add(value);
+            return true;
+        },this);
+    }
+
 }
