@@ -40,6 +40,31 @@ export class List {
     }
 
     /**
+     * Get value of last entry
+     * 
+     * @return {any}
+     */
+    getLast() {
+        if(this._list.length > 0) {
+            return this._list[this._list.length-1];
+        }
+        return null;
+    }
+
+    /**
+     * Set value on position
+     * 
+     * @param {any} value 
+     */
+    setLast(value) {
+        if(this._list.length > 0) {
+            this._list[this._list.length-1] = value;
+            return this;
+        }
+        return null;
+    }
+
+    /**
      * Add value to end of list
      * 
      * @param {any} value 

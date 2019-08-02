@@ -47,9 +47,7 @@ export class Logger{
      * @param {string} value 
      */
     static warn(value){
-        console.warn('------------------WARN------------------');
         console.warn(value);
-        console.warn('------------------/WARN------------------');
     }
 
     /**
@@ -57,9 +55,7 @@ export class Logger{
      * @param {string} value 
      */
     static error(value){
-        console.error('------------------ERROR------------------');
         console.error(value);
-        console.error('------------------/ERROR------------------');
     }
 
     /**
