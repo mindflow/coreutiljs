@@ -1,7 +1,7 @@
 /* jshint esversion: 6 */
 
 /**
- * Wrapper for an object and a function withing that object.
+ * Wrapper for an object and a function within that object.
  * Allows the function to be called with the object as it's first paramter
  */
 export class ObjectFunction{
