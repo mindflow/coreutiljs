@@ -9,6 +9,11 @@ import { Logger } from './logger.js';
 
 export class ObjectMapper {
 
+    /**
+     * 
+     * @param {object} source 
+     * @param {object} destination 
+     */
     static map(source, destination) {
         if(source === undefined) {
             Logger.error("No source object");

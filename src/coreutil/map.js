@@ -3,7 +3,7 @@
 export class Map {
 
     constructor() {
-        this._map = {};
+        this.map = {};
     }
 
     /**
@@ -11,7 +11,7 @@ export class Map {
      * @returns {number}
      */
     size() {
-        return Object.keys(this._map).length;
+        return Object.keys(this.map).length;
     }
 
     /**
@@ -19,7 +19,7 @@ export class Map {
      * @param {any} name 
      */
     get(name) {
-        return this._map[name];
+        return this.map[name];
     }
 
     /**
@@ -28,7 +28,7 @@ export class Map {
      * @param {any} value 
      */
     set(key,value) {
-        this._map[key] = value;
+        this.map[key] = value;
         return this;
     }
 
@@ -47,7 +47,7 @@ export class Map {
      * @returns {boolean}
      */
     exists(key){
-        if (key in this._map) {
+        if (key in this.map) {
             return true;
         }
         return false;
@@ -61,8 +61,8 @@ export class Map {
      * @param {any} parent 
      */
     forEach(listener,parent) {
-        for(let key in this._map) {
-            if(!listener(key,this._map[key],parent)){
+        for(let key in this.map) {
+            if(!listener(key,this.map[key],parent)){
                 break;
             }
         }

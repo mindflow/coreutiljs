@@ -6,15 +6,29 @@
 export class List {
 
     /**
+     * 
+     * @param {array} array 
+     * @param {function} fromFunction from method of entry type 
+     */
+    static from(array, fromFunction) {
+        let list = new List();
+        for(var key in array) {
+            let value = fromFunction ? fromFunction(array[key]) : array[key];
+            list.add(fromFunction(value));
+        }
+        return list;
+    }
+
+    /**
      * Create new list and optionally assign existing array
      * 
      * @param {Array} values 
      */
     constructor(values) {
         if(values !== undefined && values instanceof Array){
-            this._list = values;
+            this.list = values;
         }else{
-            this._list = [];
+            this.list = [];
         }
     }
 
@@ -25,7 +39,7 @@ export class List {
      * @return {any}
      */
     get(index) {
-        return this._list[index];
+        return this.list[index];
     }
 
     /**
@@ -35,7 +49,7 @@ export class List {
      * @param {any} value 
      */
     set(index,value) {
-        this._list[index] = value;
+        this.list[index] = value;
         return this;
     }
 
@@ -45,8 +59,8 @@ export class List {
      * @return {any}
      */
     getLast() {
-        if(this._list.length > 0) {
-            return this._list[this._list.length-1];
+        if(this.list.length > 0) {
+            return this.list[this.list.length-1];
         }
         return null;
     }
@@ -57,8 +71,8 @@ export class List {
      * @param {any} value 
      */
     setLast(value) {
-        if(this._list.length > 0) {
-            this._list[this._list.length-1] = value;
+        if(this.list.length > 0) {
+            this.list[this.list.length-1] = value;
             return this;
         }
         return null;
@@ -70,7 +84,7 @@ export class List {
      * @param {any} value 
      */
     add(value) {
-        this._list.push(value);
+        this.list.push(value);
     }
 
     /**
@@ -79,7 +93,7 @@ export class List {
      * @return {number}
      */
     size() {
-        return this._list.length;
+        return this.list.length;
     }
 
     /**
@@ -112,7 +126,7 @@ export class List {
      * @param {any} parent
      */
     forEach(listener,parent) {
-        for(let val of this._list) {
+        for(let val of this.list) {
             if(!listener(val,parent)){
                 break;
             }

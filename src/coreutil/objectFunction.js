@@ -12,8 +12,8 @@ export class ObjectFunction{
      * @param {function} theFunction 
      */
     constructor(theObject,theFunction){
-        this._object = theObject;
-        this._function = theFunction;
+        this.object = theObject;
+        this.function = theFunction;
     }
 
     /**
@@ -21,7 +21,7 @@ export class ObjectFunction{
      * @returns {any}
      */
     getObject(){
-        return this._object;
+        return this.object;
     }
 
     /**
@@ -29,7 +29,7 @@ export class ObjectFunction{
      * @returns {function}
      */
     getFunction(){
-        return this._function;
+        return this.function;
     }
 
     /**
@@ -37,7 +37,7 @@ export class ObjectFunction{
      * @param {any} params 
      */
     call(params){
-        this._function.call(this._object,params);
+        this.function.call(this.object,params);
     }
 
 }
