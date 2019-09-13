@@ -7,6 +7,8 @@
 import { List } from './list.js'
 import { Logger } from './logger.js';
 
+const LOG = new Logger("ObjectMapper");
+
 export class ObjectMapper {
 
     /**
@@ -16,10 +18,10 @@ export class ObjectMapper {
      */
     static map(source, destination) {
         if(source === undefined) {
-            Logger.error("No source object");
+            LOG.error("No source object");
         }
         if(destination === undefined) {
-            Logger.error("No destination object");
+            LOG.error("No destination object");
         }
         var sourceKeys = new List(Object.keys(source));
 
@@ -27,10 +29,10 @@ export class ObjectMapper {
             (sourceKey) => {
                 
                 if(destination[sourceKey] === undefined) {
-                    Logger.error("Unable to map " + sourceKey + " from");
-                    Logger.error(source);
-                    Logger.error("to");
-                    Logger.error(destination);
+                    LOG.error("Unable to map " + sourceKey + " from");
+                    LOG.error(source);
+                    LOG.error("to");
+                    LOG.error(destination);
                     throw "Unable to map object";
                 }
                 destination[sourceKey] = source[sourceKey];
