@@ -71,7 +71,14 @@ export class Logger{
         if(logLevel < level) {
             return;
         }
+
         let dateTime= new Date().toISOString();
+
+        if(typeof value === "object") {
+            func(levelLabel + " " + dateTime + " " + logName + ":");
+            func(value);
+            return;
+        }
         func(levelLabel + " " + dateTime + " " + logName + " " + Logger.indent(indentation, value));
     }
 
