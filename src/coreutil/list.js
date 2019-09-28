@@ -110,6 +110,23 @@ export class List {
     }
 
     /**
+     * Checks if value exists
+     * @param {any} val 
+     * @returns {boolean}
+     */
+    contains(value) {
+        let found = false;
+        this.forEach((entry,parent) => {
+            if(entry === value) {
+                found = true;
+                return false;
+            }
+            return true;
+        },this);
+        return found;
+    }
+
+    /**
      * Checks if first value is equal to parameter
      * @param {any} val 
      * @returns {boolean}
@@ -144,4 +161,12 @@ export class List {
         },this);
     }
 
+    /**
+     * Gets the underlying array
+     * 
+     * @returns {array}
+     */
+    getArray() {
+        return this.list;
+    }
 }
