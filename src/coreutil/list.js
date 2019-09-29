@@ -25,6 +25,8 @@ export class List {
      * @param {Array} values 
      */
     constructor(values) {
+        /** @type {array} */
+        this.list = null;
         if(values !== undefined && values instanceof Array){
             this.list = values;
         }else{
@@ -85,6 +87,17 @@ export class List {
      */
     add(value) {
         this.list.push(value);
+    }
+
+    /**
+     * Remove element from list
+     * 
+     * @param {object} value 
+     */
+    remove(value) {
+        this.list = this.list.filter(function(entry){
+            return entry != value;
+        });
     }
 
     /**

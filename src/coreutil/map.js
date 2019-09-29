@@ -33,6 +33,14 @@ export class Map {
     }
 
     /**
+     * Remove entry from map
+     * @param {string} key 
+     */
+    remove(key) {
+        delete this.map[key];
+    }
+
+    /**
      * Checks if key exists
      * @param {string} key 
      * @returns {boolean}
