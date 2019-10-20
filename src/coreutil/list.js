@@ -128,15 +128,7 @@ export class List {
      * @returns {boolean}
      */
     contains(value) {
-        let found = false;
-        this.forEach((entry,parent) => {
-            if(entry === value) {
-                found = true;
-                return false;
-            }
-            return true;
-        },this);
-        return found;
+        return this.getArray().includes(value);
     }
 
     /**
