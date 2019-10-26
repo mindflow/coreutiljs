@@ -13,6 +13,6 @@
   "devDependencies": {
     "rollup": "^1.25.2",
     "rollup-plugin-multi-entry": "^2.1.0",
-    "rollup-plugin-uglify": "^6.0.3"
+    "rollup-plugin-uglify-es": "^0.0.1"
   }
 }
