@@ -2,16 +2,17 @@
   "name": "coreutil_v1",
   "version": "1.0.0",
   "description": "Core Util JS",
-  "main": "./bundle/cjs/coreutil_v1.js",
+  "main": "./dist/cjs/coreutil_v1.js",
   "scripts": {
-    "build": "node ./node_modules/rollup/bin/rollup -c",
-    "watch": "node ./node_modules/rollup/bin/rollup -c --watch"
+    "build": "node ./node_modules/rollup/dist/bin/rollup -c",
+    "watch": "node ./node_modules/rollup/dist/bin/rollup -c --watch"
   },
   "author": "Toby Nilsen",
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "rollup": "^0.57.1",
-    "rollup-plugin-multi-entry": "^2.0.2"
+    "rollup": "^1.25.2",
+    "rollup-plugin-multi-entry": "^2.1.0",
+    "rollup-plugin-uglify": "^6.0.3"
   }
 }

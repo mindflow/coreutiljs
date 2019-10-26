@@ -1,10 +1,11 @@
 import multiEntry from 'rollup-plugin-multi-entry';
+import { uglify } from "rollup-plugin-uglify";
 
 export default [{
     input: "src/**/*.js",
     output: {
         name: 'coreutil_v1',
-        file: "bundle/jsm/coreutil_v1.js",
+        file: "dist/jsm/coreutil_v1.js",
         sourcemap: "inline",
         format: "es"
     },
@@ -15,7 +16,7 @@ export default [{
     input: "src/**/*.js",
     output: {
         name: 'coreutil_v1',
-        file: "bundle/cjs/coreutil_v1.js",
+        file: "dist/cjs/coreutil_v1.js",
         sourcemap: "inline",
         format: "cjs"
     },
