@@ -1,8 +1,9 @@
 {
+  "type": "module",
   "name": "coreutil_v1",
   "version": "1.0.0",
   "description": "Core Util JS",
-  "main": "./dist/cjs/coreutil_v1.js",
+  "main": "./dist/jsm/coreutil_v1.js",
   "scripts": {
     "build": "node ./node_modules/rollup/dist/bin/rollup -c",
     "watch": "node ./node_modules/rollup/dist/bin/rollup -c --watch"
