@@ -87,6 +87,7 @@ export class List {
      */
     add(value) {
         this.list.push(value);
+        return this;
     }
 
     /**
@@ -98,6 +99,7 @@ export class List {
         this.list = this.list.filter(function(entry){
             return entry != value;
         });
+        return this;
     }
 
     /**
@@ -164,6 +166,7 @@ export class List {
             parent.add(value);
             return true;
         },this);
+        return this;
     }
 
     /**
