@@ -11,7 +11,7 @@ export default [{
     },
     plugins: [
         multiEntry(),
-        uglify()
+        //uglify()
     ]
 },{
     input: "src/**/*.js",
@@ -23,6 +23,6 @@ export default [{
     },
     plugins: [
         multiEntry(),
-        uglify()
+        //uglify()
     ]
 }]

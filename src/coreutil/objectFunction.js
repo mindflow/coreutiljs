@@ -37,7 +37,7 @@ export class ObjectFunction{
      * @param {any} params 
      */
     call(params){
-        this.function.call(this.object,params);
+        return this.function.call(this.object,params);
     }
 
 }
