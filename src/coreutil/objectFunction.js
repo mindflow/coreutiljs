@@ -34,10 +34,13 @@ export class ObjectFunction{
 
     /**
      * Calls the function and passed the object as first parameter, and the provided paramter as the second paramter
-     * @param {any} params 
+     * @param {any} param
      */
-    call(params){
-        return this.function.call(this.object,params);
+    call(param){
+        if (Array.isArray(param)) {
+            return this.function.call(this.object, ...param);
+        }
+        return this.function.call(this.object, param);
     }
 
 }

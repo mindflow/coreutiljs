@@ -96,12 +96,16 @@ export class Logger{
         if(typeof value === "object") {
             func(levelLabel + " " + dateTime + " " + logName + ":");
             func(value);
-            return;
+        } else {
+            func(levelLabel + " " + dateTime + " " + logName + " " + Logger.indent(indentation, value));
         }
-        func(levelLabel + " " + dateTime + " " + logName + " " + Logger.indent(indentation, value));
 
         if (logListener) {
-            logListener.call(value, level);
+            if(typeof value === "object") {
+                logListener.call([JSON.stringify(value,null,2), level]);
+            }   else {
+                logListener.call([value, level]);
+            }
         }
     }
 
