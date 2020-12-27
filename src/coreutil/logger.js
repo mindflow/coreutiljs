@@ -1,30 +1,49 @@
-/* jshint esversion: 6 */
+import { ObjectFunction } from "./objectFunction.js";
 
-const FATAL = 1;
-const ERROR = 2;
-const WARN = 3;
-const INFO = 4;
-const DEBUG = 5;
 
-const FATAL_LABEL = "FATAL";
-const ERROR_LABEL = "ERROR";
-const WARN_LABEL  = "WARN ";
-const INFO_LABEL =  "INFO ";
-const DEBUG_LABEL = "DEBUG";
+let logLevel = null;
 
-let logLevel = INFO;
+/** @type {ObjectFunction} */
+let logListener = null;
 
 export class Logger{
+
+    static get FATAL() { return 1; };
+    static get ERROR() { return 2; };
+    static get WARN() { return 3; };;
+    static get INFO() { return 4; };
+    static get DEBUG() { return 5; };
+    
+    static get FATAL_LABEL() { return "FATAL"; };
+    static get ERROR_LABEL() { return "ERROR"; };
+    static get WARN_LABEL() { return "WARN "; };
+    static get INFO_LABEL() { return "INFO "; };
+    static get DEBUG_LABEL() { return "DEBUG"; };
 
     constructor(logName) {
         this.logName = logName;
     }
 
-    /**
-     * Disables debugging
-     */
-    static setLevel(level) {
+    static set level(level) {
         logLevel = level;
+    }
+
+    /**
+     * @param {ObjectFunction} listener 
+     */
+    static set listener(listener) {
+        logListener = listener;
+    }
+
+    static clearListener() {
+        logListener = null;
+    }
+
+    static get level() {
+        if (logLevel) {
+            return logLevel;
+        }
+        return Logger.INFO;
     }
 
     /**
@@ -32,7 +51,7 @@ export class Logger{
      * @param {string} value 
      */
     info(value, indentation = 0){
-        Logger.log(value, this.logName, INFO, INFO_LABEL, (val) => { console.info(val) }, indentation);
+        Logger.log(value, this.logName, Logger.INFO, Logger.INFO_LABEL, (val) => { console.info(val) }, indentation);
     }
 
     /**
@@ -40,7 +59,7 @@ export class Logger{
      * @param {string} value 
      */
     warn(value, indentation = 0){
-        Logger.log(value, this.logName, WARN, WARN_LABEL, (val) => { console.warn(val) }, indentation);
+        Logger.log(value, this.logName, Logger.WARN, Logger.WARN_LABEL, (val) => { console.warn(val) }, indentation);
     }
 
     /**
@@ -48,7 +67,7 @@ export class Logger{
      * @param {string} value 
      */
     debug(value, indentation = 0){
-        Logger.log(value, this.logName, DEBUG, DEBUG_LABEL, (val) => { console.debug(val) }, indentation);
+        Logger.log(value, this.logName, Logger.DEBUG, Logger.DEBUG_LABEL, (val) => { console.debug(val) }, indentation);
     }
 
     /**
@@ -56,7 +75,7 @@ export class Logger{
      * @param {string} value 
      */
     error(value, indentation = 0) {
-        Logger.log(value, this.logName, ERROR, ERROR_LABEL, (val) => { console.error(val) }, indentation);
+        Logger.log(value, this.logName, Logger.ERROR, Logger.ERROR_LABEL, (val) => { console.error(val) }, indentation);
     }
 
     /**
@@ -64,11 +83,11 @@ export class Logger{
      * @param {string} value 
      */
     fatal(value, indentation = 0) {
-        Logger.log(value, this.logName, FATAL, FATAL_LABEL, (val) => { console.fatal(val) }, indentation);
+        Logger.log(value, this.logName, Logger.FATAL, Logger.FATAL_LABEL, (val) => { console.fatal(val) }, indentation);
     }
 
     static log(value, logName, level, levelLabel, func, indentation) {
-        if(logLevel < level) {
+        if(Logger.level < level) {
             return;
         }
 
@@ -80,6 +99,10 @@ export class Logger{
             return;
         }
         func(levelLabel + " " + dateTime + " " + logName + " " + Logger.indent(indentation, value));
+
+        if (logListener) {
+            logListener.call(value, level);
+        }
     }
 
     /**
@@ -107,7 +130,7 @@ export class Logger{
      * @param {number} position 
      */
     showPos(value,position){
-        if(logLevel < DEBUG){
+        if(logLevel < Logger.DEBUG){
             return;
         }
         let cursorLine = '';
