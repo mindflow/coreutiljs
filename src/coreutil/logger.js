@@ -102,7 +102,11 @@ export class Logger{
 
         if (logListener) {
             if(typeof value === "object") {
-                logListener.call([JSON.stringify(value,null,2), level]);
+                if (value instanceof Error) {
+                    logListener.call([value.stack, level]);
+                } else {
+                    logListener.call([JSON.stringify(value,null,2), level]);
+                }
             }   else {
                 logListener.call([value, level]);
             }
