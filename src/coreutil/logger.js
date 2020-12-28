@@ -107,9 +107,15 @@ export class Logger{
                 } else {
                     logListener.call([JSON.stringify(value,null,2), level]);
                 }
-            }   else {
-                logListener.call([value, level]);
+                return
             }
+
+            if(value === undefined) {
+                logListener.call(["undefined", level]);
+                return;
+            }
+
+            logListener.call([value, level]);
         }
     }
 
