@@ -145,7 +145,7 @@ export class List {
     /**
      * Loops over all values in the list and calls the provided function
      * with the key, value and parent as callback paramters while the
-     * called function returns true or the list is fully iterated
+     * called function returns true or the list is not yet fully iterated
      * @param {function} listener
      * @param {any} parent
      */
@@ -155,6 +155,45 @@ export class List {
                 break;
             }
         }
+    }
+
+    /**
+     * Loops over all values in the list and calls the provided function
+     * with the value and parent as callback paramters. The listener must
+     * itself return a promise which when resolved will continue the chain
+     * 
+     * @param {function} listener
+     * @param {any} parent
+     */
+    promiseChain(listener,parent) {
+        let valueArray = [];
+        for(let val of this.list) {
+            valueArray.push(val);
+        }
+        return new Promise((completedResolve, completedReject) => {
+            this.promiseChainStep(listener, valueArray, parent, 0, completedResolve, completedReject);
+        });
+    }
+
+    /**
+     * 
+     * @param {Function} listener 
+     * @param {Array} valueArray 
+     * @param {Object} parent
+     * @param {Number} index 
+     * @param {Function} completedResolve
+     * @param {Function} completedReject
+     */
+    promiseChainStep(listener, valueArray, parent, index, completedResolve, completedReject) {
+        if (index >= valueArray.length) {
+            completedResolve();
+            return;
+        }
+        listener(valueArray[index], parent).then(() => {
+            this.promiseChainStep(listener, valueArray, parent, index+1, completedResolve, completedReject);
+        }).catch((error) => {
+            completedReject(error);
+        });
     }
 
     /**

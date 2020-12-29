@@ -77,6 +77,49 @@ export class Map {
     }
 
     /**
+     * Loops over all values in the map and calls the provided function
+     * with the key, value and parent as callback paramters. The listener
+     * must itself return a promise which when resolved will continue the chain
+     * 
+     * @param {function} listener
+     * @param {any} parent
+     */
+    promiseChain(listener, parent) {
+        let keyArray = [];
+        let valueArray = [];
+        for(let key in this.map) {
+            keyArray.push(key);
+            valueArray.push(this.map[key]);
+        }
+        return new Promise((completedResolve, completedReject) => {
+            this.promiseChainStep(listener, keyArray, valueArray, parent, 0, completedResolve, completedReject);
+        });
+    }
+
+    /**
+     * 
+     * @param {Function} listener 
+     * @param {Array} keyArray 
+     * @param {Array} valueArray 
+     * @param {Object} parent
+     * @param {Number} index 
+     * @param {Function} completedResolve
+     * @param {Function} completedReject
+     */
+    promiseChainStep(listener, keyArray, valueArray, parent, index, completedResolve, completedReject) {
+        if (index >= valueArray.length) {
+            completedResolve();
+            return;
+        }
+        listener(keyArray[index], valueArray[index], parent).then(() => {
+            this.promiseChainStep(listener, keyArray, valueArray, parent, index+1, completedResolve, completedReject);
+        }).catch((error) => {
+            completedReject(error);
+        });
+    }
+
+
+    /**
      * Adds all entries from provided map
      * @param {Map} sourceMap 
      */
