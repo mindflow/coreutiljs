@@ -216,4 +216,12 @@ export class List {
     getArray() {
         return this.list;
     }
+
+    /**
+     * 
+     * @param {Function} filterFunction 
+     */
+    filter(filterFunction) {
+        return new List(this.list.filter(filterFunction));
+    }
 }
