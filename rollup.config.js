@@ -16,7 +16,7 @@ export default [{
     input: "src/**/*.js",
     output: {
         name: 'coreutil_v1',
-        file: "dist/jsm/coreutil_v1.js",
+        file: "dist/jsm/coreutil_v1.min.js",
         format: "es"
     },
     plugins: [
