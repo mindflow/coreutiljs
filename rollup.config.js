@@ -10,8 +10,18 @@ export default [{
         format: "es"
     },
     plugins: [
+        multiEntry()
+    ]
+},{
+    input: "src/**/*.js",
+    output: {
+        name: 'coreutil_v1',
+        file: "dist/jsm/coreutil_v1.js",
+        format: "es"
+    },
+    plugins: [
         multiEntry(),
-        //uglify()
+        // uglify() unknown bug
     ]
 },{
     input: "src/**/*.js",
@@ -22,7 +32,6 @@ export default [{
         format: "cjs"
     },
     plugins: [
-        multiEntry(),
-        //uglify()
+        multiEntry()
     ]
 }]

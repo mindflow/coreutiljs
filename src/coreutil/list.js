@@ -7,8 +7,8 @@ export class List {
 
     /**
      * 
-     * @param {array} array 
-     * @param {function} fromFunction from method of entry type 
+     * @param {Array} array 
+     * @param {Function} fromFunction from method of entry type 
      */
     static from(array, fromFunction) {
         let list = new List();
@@ -166,12 +166,8 @@ export class List {
      * @param {any} parent
      */
     promiseChain(listener,parent) {
-        let valueArray = [];
-        for(let val of this.list) {
-            valueArray.push(val);
-        }
         return new Promise((completedResolve, completedReject) => {
-            this.promiseChainStep(listener, valueArray, parent, 0, completedResolve, completedReject);
+            this.promiseChainStep(listener, this.list, parent, 0, completedResolve, completedReject);
         });
     }
 
