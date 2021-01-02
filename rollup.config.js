@@ -1,5 +1,5 @@
-import multiEntry from 'rollup-plugin-multi-entry';
-import uglify from "rollup-plugin-uglify-es";
+import multi from '@rollup/plugin-multi-entry';
+import { terser } from "rollup-plugin-terser";
 
 export default [{
     input: "src/**/*.js",
@@ -10,7 +10,7 @@ export default [{
         format: "es"
     },
     plugins: [
-        multiEntry()
+        multi()
     ]
 },{
     input: "src/**/*.js",
@@ -20,8 +20,8 @@ export default [{
         format: "es"
     },
     plugins: [
-        multiEntry(),
-        // uglify() unknown bug
+        multi(),
+        terser()
     ]
 },{
     input: "src/**/*.js",
@@ -32,6 +32,6 @@ export default [{
         format: "cjs"
     },
     plugins: [
-        multiEntry()
+        multi()
     ]
 }]

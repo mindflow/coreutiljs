@@ -12,8 +12,8 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "rollup": "^1.25.2",
-    "rollup-plugin-multi-entry": "^2.1.0",
-    "rollup-plugin-uglify-es": "^0.0.1"
+    "rollup": "^2.35.1",
+    "@rollup/plugin-multi-entry": "^4.0.0",
+    "rollup-plugin-terser": "^7.0.2"
   }
 }
