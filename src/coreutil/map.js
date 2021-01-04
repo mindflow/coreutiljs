@@ -92,7 +92,7 @@ export class Map {
             valueArray.push(this.map[key]);
         }
         return new Promise((completedResolve, completedReject) => {
-            this.promiseChainStep(listener, keyArray, valueArray, parent, 0, completedResolve, completedReject);
+            Map.promiseChainStep(listener, keyArray, valueArray, parent, 0, completedResolve, completedReject);
         });
     }
 
@@ -106,13 +106,13 @@ export class Map {
      * @param {Function} completedResolve
      * @param {Function} completedReject
      */
-    promiseChainStep(listener, keyArray, valueArray, parent, index, completedResolve, completedReject) {
+    static promiseChainStep(listener, keyArray, valueArray, parent, index, completedResolve, completedReject) {
         if (index >= valueArray.length) {
             completedResolve();
             return;
         }
         listener(keyArray[index], valueArray[index], parent).then(() => {
-            this.promiseChainStep(listener, keyArray, valueArray, parent, index+1, completedResolve, completedReject);
+            Map.promiseChainStep(listener, keyArray, valueArray, parent, index+1, completedResolve, completedReject);
         }).catch((error) => {
             completedReject(error);
         });

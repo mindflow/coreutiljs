@@ -167,7 +167,7 @@ export class List {
      */
     promiseChain(listener,parent) {
         return new Promise((completedResolve, completedReject) => {
-            this.promiseChainStep(listener, this.list, parent, 0, completedResolve, completedReject);
+            List.promiseChainStep(listener, this.list, parent, 0, completedResolve, completedReject);
         });
     }
 
@@ -180,13 +180,13 @@ export class List {
      * @param {Function} completedResolve
      * @param {Function} completedReject
      */
-    promiseChainStep(listener, valueArray, parent, index, completedResolve, completedReject) {
+    static promiseChainStep(listener, valueArray, parent, index, completedResolve, completedReject) {
         if (index >= valueArray.length) {
             completedResolve();
             return;
         }
         listener(valueArray[index], parent).then(() => {
-            this.promiseChainStep(listener, valueArray, parent, index+1, completedResolve, completedReject);
+            List.promiseChainStep(listener, valueArray, parent, index+1, completedResolve, completedReject);
         }).catch((error) => {
             completedReject(error);
         });
