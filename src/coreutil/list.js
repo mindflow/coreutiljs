@@ -1,5 +1,3 @@
-/* jshint esversion: 6 */
-
 /**
  * Generic List class
  * @template T
@@ -145,15 +143,17 @@ export class List {
     firstValueEquals(val) {
         return this.valueAtEquals(0,val);
     }
-
+    
     /**
      * Loops over all values in the list and calls the provided function
      * with the key, value and parent as callback paramters while the
      * called function returns true or the list is not yet fully iterated
-     * @param {function} listener
+     * 
+     * @param {function(T, any)} listener
      * @param {any} parent
+     * 
      */
-    forEach(listener,parent) {
+    forEach(listener, parent) {
         for(let val of this.list) {
             if(!listener(val,parent)){
                 break;
@@ -166,7 +166,7 @@ export class List {
      * with the value and parent as callback paramters. The listener must
      * itself return a promise which when resolved will continue the chain
      * 
-     * @param {function} listener
+     * @param {function(T, any)} listener
      * @param {any} parent
      */
     promiseChain(listener,parent) {
@@ -177,7 +177,7 @@ export class List {
 
     /**
      * 
-     * @param {Function} listener 
+     * @param {function(T, any)} listener 
      * @param {Array<T>} valueArray 
      * @param {Object} parent
      * @param {Number} index 

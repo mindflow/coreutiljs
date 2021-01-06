@@ -67,8 +67,10 @@ export class Map {
      * Loops over all values in the map and calls the provided function
      * with the key, value and parent as callback paramters while the
      * called function returns true or the list is fully iterated
-     * @param {Function} listener 
+     * 
+     * @param {function(String, T, any)} listener 
      * @param {any} parent 
+     * 
      */
     forEach(listener,parent) {
         for(let key in this.map) {
@@ -83,7 +85,7 @@ export class Map {
      * with the key, value and parent as callback paramters. The listener
      * must itself return a promise which when resolved will continue the chain
      * 
-     * @param {function} listener
+     * @param {function(String, T, any)} listener
      * @param {any} parent
      */
     promiseChain(listener, parent) {
@@ -100,7 +102,7 @@ export class Map {
 
     /**
      * 
-     * @param {Function} listener 
+     * @param {function(String, T, any)} listener 
      * @param {Array} keyArray 
      * @param {Array} valueArray 
      * @param {Object} parent
