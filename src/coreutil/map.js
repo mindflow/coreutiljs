@@ -18,7 +18,7 @@ export class Map {
     /**
      * Returns the object at given key
      * @param {string} name 
-     * @returns T
+     * @returns {T}
      */
     get(name) {
         return this.map[name];
