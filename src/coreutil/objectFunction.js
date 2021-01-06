@@ -3,12 +3,14 @@
 /**
  * Wrapper for an object and a function within that object.
  * Allows the function to be called with the object as it's first paramter
+ * 
+ * @template T
  */
 export class ObjectFunction{
 
     /**
      * Contructor
-     * @param {any} theObject 
+     * @param {T} theObject 
      * @param {function} theFunction 
      */
     constructor(theObject,theFunction){
@@ -18,7 +20,7 @@ export class ObjectFunction{
 
     /**
      * Get the object
-     * @returns {any}
+     * @returns {T}
      */
     getObject(){
         return this.object;

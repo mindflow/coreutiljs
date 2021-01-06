@@ -1,20 +1,20 @@
-/* jshint esversion: 6 */
-
-/**
- * Maps fields from one object to another
- */
-
 import { List } from './list.js'
 import { Logger } from './logger.js';
 
 const LOG = new Logger("ObjectMapper");
 
+/**
+ * Maps fields from one object to another
+ */
 export class ObjectMapper {
 
     /**
+     * Maps fields from one object to another
      * 
+     * @template T
      * @param {object} source 
-     * @param {object} destination 
+     * @param {T} destination 
+     * @returns T
      */
     static map(source, destination) {
         if(source === undefined) {

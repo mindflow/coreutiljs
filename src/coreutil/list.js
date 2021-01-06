@@ -2,6 +2,7 @@
 
 /**
  * Generic List class
+ * @template T
  */
 export class List {
 
@@ -22,7 +23,7 @@ export class List {
     /**
      * Create new list and optionally assign existing array
      * 
-     * @param {Array} values 
+     * @param {Array<T>} values 
      */
     constructor(values) {
         /** @type {array} */
@@ -38,7 +39,7 @@ export class List {
      * Get value of position
      * 
      * @param {number} index 
-     * @return {any}
+     * @return {T}
      */
     get(index) {
         return this.list[index];
@@ -48,7 +49,7 @@ export class List {
      * Set value on position
      * 
      * @param {number} index 
-     * @param {any} value 
+     * @param {T} value 
      */
     set(index,value) {
         this.list[index] = value;
@@ -58,7 +59,7 @@ export class List {
     /**
      * Get value of last entry
      * 
-     * @return {any}
+     * @return {T}
      */
     getLast() {
         if(this.list.length > 0) {
@@ -70,7 +71,7 @@ export class List {
     /**
      * Set value on position
      * 
-     * @param {any} value 
+     * @param {T} value 
      */
     setLast(value) {
         if(this.list.length > 0) {
@@ -83,7 +84,7 @@ export class List {
     /**
      * Add value to end of list
      * 
-     * @param {any} value 
+     * @param {T} value 
      */
     add(value) {
         this.list.push(value);
@@ -93,7 +94,7 @@ export class List {
     /**
      * Remove element from list
      * 
-     * @param {object} value 
+     * @param {T} value 
      */
     remove(value) {
         this.list = this.list.filter(function(entry){
@@ -113,8 +114,9 @@ export class List {
 
     /**
      * Checks if value on index is equal to paramter
+     * 
      * @param {number} index 
-     * @param {any} val 
+     * @param {T} val 
      * @returns {boolean}
      */
     valueAtEquals(index,val) {
@@ -126,7 +128,8 @@ export class List {
 
     /**
      * Checks if value exists
-     * @param {any} val 
+     * 
+     * @param {T} val 
      * @returns {boolean}
      */
     contains(value) {
@@ -135,7 +138,8 @@ export class List {
 
     /**
      * Checks if first value is equal to parameter
-     * @param {any} val 
+     * 
+     * @param {T} val 
      * @returns {boolean}
      */
     firstValueEquals(val) {
@@ -174,7 +178,7 @@ export class List {
     /**
      * 
      * @param {Function} listener 
-     * @param {Array} valueArray 
+     * @param {Array<T>} valueArray 
      * @param {Object} parent
      * @param {Number} index 
      * @param {Function} completedResolve
@@ -194,7 +198,8 @@ export class List {
 
     /**
      * Adds all entries from provided list
-     * @param {List} sourceList 
+     * 
+     * @param {List<T>} sourceList 
      */
     addAll(sourceList){
         sourceList.forEach(function(value,parent) {
@@ -207,7 +212,7 @@ export class List {
     /**
      * Gets the underlying array
      * 
-     * @returns {array}
+     * @returns {Array<T>}
      */
     getArray() {
         return this.list;

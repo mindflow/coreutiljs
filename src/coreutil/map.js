@@ -1,5 +1,6 @@
-/* jshint esversion: 6 */
-
+/**
+ * @template {T}
+ */
 export class Map {
 
     constructor() {
@@ -16,7 +17,8 @@ export class Map {
 
     /**
      * Returns the object at given key
-     * @param {any} name 
+     * @param {string} name 
+     * @returns T
      */
     get(name) {
         return this.map[name];
@@ -25,9 +27,9 @@ export class Map {
     /**
      * Sets value at key
      * @param {string} key 
-     * @param {any} value 
+     * @param {T} value 
      */
-    set(key,value) {
+    set(key, value) {
         this.map[key] = value;
         return this;
     }
@@ -65,7 +67,7 @@ export class Map {
      * Loops over all values in the map and calls the provided function
      * with the key, value and parent as callback paramters while the
      * called function returns true or the list is fully iterated
-     * @param {function} listener 
+     * @param {Function} listener 
      * @param {any} parent 
      */
     forEach(listener,parent) {
@@ -121,7 +123,7 @@ export class Map {
 
     /**
      * Adds all entries from provided map
-     * @param {Map} sourceMap 
+     * @param {Map<T>} sourceMap 
      */
     addAll(sourceMap){
         sourceMap.forEach(function(key,value,parent) {
