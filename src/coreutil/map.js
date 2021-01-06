@@ -7,6 +7,18 @@ export class Map {
         this.map = {};
     }
 
+
+    /**
+     * Map Listener
+     * 
+     * @typedef {function(String, T, Object)} MapListener
+     * @callback MapListener
+     * @param {String} key
+     * @param {T} value
+     * @param {Object} parent
+     */
+
+
     /**
      * Gets the size of the map
      * @returns {number}
@@ -68,7 +80,7 @@ export class Map {
      * with the key, value and parent as callback paramters while the
      * called function returns true or the list is fully iterated
      * 
-     * @param {function(String, T, any)} listener 
+     * @param {MapListener} listener 
      * @param {any} parent 
      * 
      */
@@ -85,7 +97,7 @@ export class Map {
      * with the key, value and parent as callback paramters. The listener
      * must itself return a promise which when resolved will continue the chain
      * 
-     * @param {function(String, T, any)} listener
+     * @param {MapListener} listener
      * @param {any} parent
      */
     promiseChain(listener, parent) {
@@ -102,7 +114,7 @@ export class Map {
 
     /**
      * 
-     * @param {function(String, T, any)} listener 
+     * @param {MapListener} listener 
      * @param {Array} keyArray 
      * @param {Array} valueArray 
      * @param {Object} parent

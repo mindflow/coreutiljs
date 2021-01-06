@@ -34,6 +34,16 @@ export class List {
     }
 
     /**
+     * List Listener
+     * 
+     * @typedef {function(T, Object)} ListListener
+     * @callback ListListener
+     * @param {T} value
+     * @param {Object} parent
+     */
+
+
+    /**
      * Get value of position
      * 
      * @param {number} index 
@@ -149,7 +159,7 @@ export class List {
      * with the key, value and parent as callback paramters while the
      * called function returns true or the list is not yet fully iterated
      * 
-     * @param {function(T, any)} listener
+     * @param {ListListener} listener
      * @param {any} parent
      * 
      */
@@ -166,7 +176,7 @@ export class List {
      * with the value and parent as callback paramters. The listener must
      * itself return a promise which when resolved will continue the chain
      * 
-     * @param {function(T, any)} listener
+     * @param {ListListener} listener
      * @param {any} parent
      */
     promiseChain(listener,parent) {
@@ -177,7 +187,7 @@ export class List {
 
     /**
      * 
-     * @param {function(T, any)} listener 
+     * @param {ListListener} listener 
      * @param {Array<T>} valueArray 
      * @param {Object} parent
      * @param {Number} index 

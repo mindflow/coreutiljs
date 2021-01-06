@@ -1,19 +1,18 @@
-/* jshint esversion: 6 */
-
 /**
  * Wrapper for an object and a function within that object.
  * Allows the function to be called with the object as it's first paramter
  * 
  * @template T
+ * @template F
  */
 export class ObjectFunction{
 
     /**
      * Contructor
      * @param {T} theObject 
-     * @param {function} theFunction 
+     * @param {F} theFunction 
      */
-    constructor(theObject,theFunction){
+    constructor(theObject, theFunction){
         this.object = theObject;
         this.function = theFunction;
     }
@@ -28,7 +27,7 @@ export class ObjectFunction{
 
     /**
      * Get the function
-     * @returns {function}
+     * @returns {F}
      */
     getFunction(){
         return this.function;
