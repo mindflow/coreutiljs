@@ -13,24 +13,12 @@ export class ObjectFunction{
      * @param {F} theFunction 
      */
     constructor(theObject, theFunction){
+
+        /** @type {T} */
         this.object = theObject;
+
+        /** @type {F} */
         this.function = theFunction;
-    }
-
-    /**
-     * Get the object
-     * @returns {T}
-     */
-    getObject(){
-        return this.object;
-    }
-
-    /**
-     * Get the function
-     * @returns {F}
-     */
-    getFunction(){
-        return this.function;
     }
 
     /**
