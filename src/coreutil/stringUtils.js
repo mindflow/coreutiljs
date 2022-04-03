@@ -58,4 +58,17 @@ export class StringUtils{
      static equals(value1, value2) {
         return value1 == value2;
     }
+
+    /**
+     * 
+     * @param {string} value1 
+     * @param {string} value2 
+     * @returns 
+     */
+     static startsWith(value1, value2) {
+         if (!value1 || !value2) {
+             return false;
+         }
+        return value1.startsWith(value2);
+    }
 }
