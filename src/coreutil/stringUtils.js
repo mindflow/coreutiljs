@@ -27,7 +27,7 @@ export class StringUtils{
     }
 
     static hasValue(val) {
-        if(val ==! null && val ==! undefined) {
+        if(val !== null && val !== undefined) {
             return true;
         }
         return false;
