@@ -1,9 +1,9 @@
-import { ObjectFunction } from "./objectFunction.js";
+import { Method } from "./method.js";
 
 
 let logLevel = null;
 
-/** @type {ObjectFunction} */
+/** @type {Method} */
 let logListener = null;
 
 export class Logger{
@@ -29,7 +29,7 @@ export class Logger{
     }
 
     /**
-     * @param {ObjectFunction} listener 
+     * @param {Method} listener 
      */
     static set listener(listener) {
         logListener = listener;

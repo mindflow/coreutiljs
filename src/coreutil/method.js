@@ -5,7 +5,7 @@
  * @template T
  * @template F
  */
-export class ObjectFunction{
+export class Method{
 
     /**
      * Contructor
