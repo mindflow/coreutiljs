@@ -194,16 +194,17 @@ export class List {
      * @param {Function} completedResolve
      * @param {Function} completedReject
      */
-    static promiseChainStep(listener, valueArray, parent, index, completedResolve, completedReject) {
+    static async promiseChainStep(listener, valueArray, parent, index, completedResolve, completedReject) {
         if (index >= valueArray.length) {
             completedResolve();
-            return;
+            return null;
         }
-        listener(valueArray[index], parent).then(() => {
+        try {
+            await listener(valueArray[index], parent);
             List.promiseChainStep(listener, valueArray, parent, index+1, completedResolve, completedReject);
-        }).catch((error) => {
+        } catch (error) {
             completedReject(error);
-        });
+        }
     }
 
     /**
