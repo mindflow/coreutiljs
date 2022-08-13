@@ -35,8 +35,8 @@ export class StringUtils{
 
     /**
      * 
-     * @param {string} value1 
-     * @param {string} value2 
+     * @param {String} value1 
+     * @param {String} value2 
      * @returns 
      */
     static nonNullEquals(value1, value2) {
@@ -51,8 +51,8 @@ export class StringUtils{
 
     /**
      * 
-     * @param {string} value1 
-     * @param {string} value2 
+     * @param {String} value1 
+     * @param {String} value2 
      * @returns 
      */
      static equals(value1, value2) {
@@ -61,8 +61,8 @@ export class StringUtils{
 
     /**
      * 
-     * @param {string} value1 
-     * @param {string} value2 
+     * @param {String} value1 
+     * @param {String} value2 
      * @returns 
      */
      static startsWith(value1, value2) {
@@ -70,5 +70,59 @@ export class StringUtils{
              return false;
          }
         return value1.startsWith(value2);
+    }
+
+    /**
+     * 
+     * @param {String} value
+     * @returns the compressed String
+     */
+    static compressWhitespace(value) {
+        if (StringUtils.isBlank(value)) {
+            return value;
+        }
+        while(value.indexOf("  ") > -1) {
+            value = value.replace("  ", " ");
+        }
+        return value;
+    }
+
+    /**
+     * 
+     * @param {String} value 
+     * @param {String} delimiter 
+     * @param {Boolean} trim
+     * @param {Boolean} compressWhitespace
+     * @returns the array
+     */
+    static toArray(value, delimiter, trim = true, compressWhitespace = true) {
+        if (trim) {
+            value = StringUtils.trim(value);
+        }
+        if (compressWhitespace) {
+            value = StringUtils.compressWhitespace(value);
+        }
+        if (StringUtils.isBlank(value)) {
+            return [];
+        }
+        if (StringUtils.isBlank(delimiter)) {
+            return [value];
+        }
+        if (value.indexOf(delimiter) == -1) {
+            return [value];
+        }
+        return value.split(delimiter);
+    }
+
+    /**
+     * 
+     * @param {String} value 
+     * @returns the trimmed String
+     */
+    static trim(value) {
+        if (StringUtils.isBlank(value)) {
+            return value;
+        }
+        return value.trim();
     }
 }
