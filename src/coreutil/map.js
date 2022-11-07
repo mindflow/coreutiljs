@@ -8,6 +8,18 @@ export class Map {
     }
 
 
+    static from(map) {
+        const newMap = new Map();
+        if (map instanceof Map) {
+            newMap.map = map.map;
+        } else if (map.map) {
+            newMap.map = map.map;
+        } else {
+            newMap.map = map;
+        }
+        return newMap;
+    }
+
     /**
      * Map Listener
      * 
