@@ -28,7 +28,9 @@ export class List {
         this.list = null;
         if(values !== undefined && values instanceof Array){
             this.list = values;
-        }else{
+        }else if(values !== undefined && values !== null) {
+            this.list = [values];
+        } else {
             this.list = [];
         }
     }
