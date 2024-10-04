@@ -8,6 +8,23 @@ const LOG = new Logger("ObjectMapper");
  */
 export class ObjectMapper {
 
+
+    /**
+     * Maps fields from one object to another
+     * 
+     * @template T[]
+     * @param {array} source 
+     * @param {T[]} destination 
+     * @returns T[]
+     */
+    static mapAll(source, destination) {
+        let response = [];
+        source.forEach(element => {
+            response.push(this.map(element, destination));
+        });
+        return response;
+    }
+
     /**
      * Maps fields from one object to another
      * 
