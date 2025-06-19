@@ -14,13 +14,13 @@ export class ObjectMapper {
      * 
      * @template T[]
      * @param {array} source 
-     * @param {T[]} destination 
+     * @param {T} destination 
      * @returns T[]
      */
     static mapAll(source, destination) {
         let response = [];
         source.forEach(element => {
-            response.push(this.map(element, destination));
+            response.push(this.map(element, new destination()));
         });
         return response;
     }
