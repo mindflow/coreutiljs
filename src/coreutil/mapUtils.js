@@ -34,4 +34,26 @@ export class MapUtils {
         return result;
     }
 
+    /**
+     * 
+     * @param {Array<Map<any,any>>} sourceMapArray
+     * @param {Boolean} overwrite
+     * @return {Map<any,any>}
+     */
+    static merge(sourceMapArray, overwrite = true) {
+        const resultMap = new Map();
+        if (!sourceMapArray || sourceMapArray.length === 0) {
+            return null;
+        }
+
+        sourceMapArray.forEach((sourceMap) => {
+            sourceMap.forEach((value, key) => {
+                if (overwrite || !resultMap.has(key)) {
+                    resultMap.set(key, value);
+                }
+            });
+        });
+        return resultMap;
+    }
+
 }

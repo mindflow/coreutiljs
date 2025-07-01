@@ -22,4 +22,46 @@ export class ArrayUtils {
         return result;
     }
 
+    /**
+     * Merge multiple arrays into one
+     * @param {Array<Array<any>>} sourceArrayArray
+     * @return {Array<any>}
+     */
+    static merge(sourceArrayArray) {
+        const resultArray = new Array();
+        if (!sourceArrayArray || sourceArrayArray.length === 0) {
+            return null;
+        }
+
+        sourceArrayArray.forEach((sourceArray) => {
+            sourceArray.forEach((value) => {
+                if (!resultArray.includes(value)) {
+                    resultArray.push(value);
+                }
+            });
+        });
+        return resultArray;
+    }
+
+    /**
+     * Add if not exists
+     * @param {Array<any>} array 
+     * @param {any} value 
+     * @returns 
+     */
+    static add(array, value) {
+        if (!array) {
+            return null;
+        }
+
+        const newArray = new Array();
+        array.forEach((item) => {
+            if (item !== value) {
+                newArray.push(item);
+            }
+        });
+        newArray.push(value);
+        return newArray;
+    }
+
 }
