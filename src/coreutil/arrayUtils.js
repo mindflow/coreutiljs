@@ -28,11 +28,11 @@ export class ArrayUtils {
      * @return {Array<any>}
      */
     static merge(sourceArrayArray) {
-        const resultArray = new Array();
         if (!sourceArrayArray || sourceArrayArray.length === 0) {
             return null;
         }
-
+        
+        const resultArray = new Array();
         sourceArrayArray.forEach((sourceArray) => {
             sourceArray.forEach((value) => {
                 if (!resultArray.includes(value)) {
