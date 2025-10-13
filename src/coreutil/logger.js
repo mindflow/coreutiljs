@@ -76,6 +76,7 @@ export class Logger{
      */
     error(value, indentation = 0) {
         Logger.log(value, this.logName, Logger.ERROR, Logger.ERROR_LABEL, (val) => { console.error(val) }, indentation);
+        console.trace();
     }
 
     /**
