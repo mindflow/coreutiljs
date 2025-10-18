@@ -125,4 +125,12 @@ export class StringUtils{
         }
         return value.trim();
     }
+
+    static leftPad(value, targetLength, padChar) {
+        let result = value;
+        while (result.length < targetLength) {
+            result = padChar + result;
+        }
+        return result;
+    }
 }
