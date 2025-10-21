@@ -6,11 +6,7 @@ export class MacUtils {
      * @returns {String}
      */
     static toMacAddress(mac) {
-        let macAddress = "";
-        for (let i = 5; i >= 0; i--) {
-            const byte = (mac >> (i * 8)) & 0xFF;
-            macAddress += (i < 5 ? ":" : "") + ("0" + byte.toString(16)).slice(-2);
-        }
-        return macAddress;
+        let hex = mac.toString(16).toUpperCase().padStart(12, '0');
+        return hex.match(/.{1,2}/g).reverse().join(":");
     }
 }
