@@ -19,6 +19,10 @@ export class Method{
 
         /** @type {F} */
         this.function = theFunction;
+        if (this.function === null || this.function === undefined) {
+            console.trace();
+            throw new Error("Method function missing");
+        }
     }
 
     /**
