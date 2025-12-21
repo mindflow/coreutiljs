@@ -133,4 +133,17 @@ export class StringUtils{
         }
         return result;
     }
+
+    /**
+     * 
+     * @param {String} needle 
+     * @param {String} haystack 
+     * @returns 
+     */
+    static contains(needle, haystack) {
+        if (!StringUtils.hasValue(needle) || !StringUtils.hasValue(haystack)) {
+            return false;
+        }
+        return haystack.indexOf(needle) > -1;
+    }
 }
