@@ -100,4 +100,22 @@ export class ArrayUtils {
         }
     }
 
+    /**
+     * 
+     * @param {Object} value 
+     * @param {Array<Object>} array 
+     * @returns 
+     */
+    static contains(value, array) {
+        if (!array) {
+            return false;
+        }
+        for (let i = 0; i < array.length; i++) {
+            if (array[i] === value) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
