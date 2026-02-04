@@ -45,6 +45,11 @@ export class ObjectMapper {
         sourceKeys.forEach(
             (sourceKey) => {
                 
+                if (sourceKey.startsWith("__")) {
+                    // Ignore technical fields
+                    return true;
+                }
+
                 if(destination[sourceKey] === undefined) {
                     LOG.error("Unable to map " + sourceKey + " from");
                     LOG.error(source);
