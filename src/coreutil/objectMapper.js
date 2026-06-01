@@ -15,12 +15,17 @@ export class ObjectMapper {
      * @template T[]
      * @param {array} source 
      * @param {T} destination 
+     * @param {function} mapperFunction Custom mapper function to map each element. If null, the default mapping is used.
      * @returns T[]
      */
-    static mapAll(source, destination) {
+    static mapAll(source, destination, mapperFunction = null) {
         let response = [];
         source.forEach(element => {
-            response.push(this.map(element, new destination()));
+            if (mapperFunction === null) {
+                response.push(ObjectMapper.map(element, new destination()));
+            } else {
+                response.push(mapperFunction(element));
+            }
         });
         return response;
     }
