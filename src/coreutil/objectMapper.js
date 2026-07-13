@@ -45,7 +45,7 @@ export class ObjectMapper {
         if(destination === undefined) {
             LOG.error("No destination object");
         }
-        var sourceKeys = new List(Object.keys(source));
+        const sourceKeys = new List(Object.keys(source));
 
         sourceKeys.forEach(
             (sourceKey) => {
@@ -56,10 +56,9 @@ export class ObjectMapper {
                 }
 
                 if(destination[sourceKey] === undefined) {
-                    LOG.error("Unable to map " + sourceKey + " from");
-                    LOG.error(source);
-                    LOG.error("to");
-                    LOG.error(destination);
+                    LOG.error("Unable to map " + sourceKey + " from / to:");
+                    LOG.warn(source);
+                    LOG.warn(destination);
                     throw "Unable to map object";
                 }
                 destination[sourceKey] = source[sourceKey];
